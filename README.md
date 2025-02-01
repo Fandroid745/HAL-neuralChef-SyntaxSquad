@@ -5,10 +5,7 @@
 
 NeuralChef is a revolutionary recipe generation and management web application that leverages the power of AI to bring culinary creativity to your fingertips. Tired of the same old dishes? Let our intelligent system, powered by **Llama 3**, conjure up exciting new recipes based on your preferences and dietary needs. From quick weeknight meals to gourmet feasts, NeuralChef is your personal culinary assistant.
 
-![NeuralChef Demo](placeholder_gif_or_screenshot.gif)  
-*(Replace with an actual GIF or screenshot of your app in action.)*
 
----
 
 ## Built with Passion (and a dash of AI magic!) 💖
 
