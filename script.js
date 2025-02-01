@@ -20,6 +20,8 @@ function updateToggleButton(theme) {
   themeToggle.textContent = theme === 'dark-mode' ? '☀️' : '🌙';
 }
 
+
+
 // Navigation Logic
 const homeLink = document.getElementById('home-link');
 const shareExtraLink = document.getElementById('share-extra-link');
@@ -173,3 +175,5 @@ document.getElementById('back-btn').addEventListener('click', () => {
         document.getElementById('back-btn').style.display = 'block'; // Show Back button on error
     }
   });
+
+  
