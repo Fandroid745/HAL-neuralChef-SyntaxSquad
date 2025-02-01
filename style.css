@@ -28,7 +28,11 @@ body.dark-mode {
   max-width: 600px;
   width: 100%;
   transition: background 0.3s ease, color 0.3s ease;
-  position: relative; /* Added for positioning the theme toggle */
+  position: relative;
+  min-height: 400px; /* Ensure the container has a minimum height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute space evenly */
 }
 
 body.dark-mode .container {
@@ -155,6 +159,13 @@ button:hover {
 
 .output-section {
   display: none;
+  max-height: 400px; /* Set a maximum height for the output section */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  margin-top: 20px; /* Add some spacing between input and output */
+  padding: 10px; /* Add padding to prevent content from touching the edges */
+  background: rgba(255, 255, 255, 0.9); /* Ensure background matches the container */
+  border-radius: 8px; /* Match the container's border radius */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
 .loading {
@@ -178,8 +189,7 @@ button:hover {
 }
 
 body.dark-mode .recipe {
-  background: rgba(51, 51, 51, 0.9);
-  color: #e0e0e0;
+  background: rgba(51, 51, 51, 0.9); /* Dark mode background */
 }
 
 .recipe h2 {
@@ -189,4 +199,24 @@ body.dark-mode .recipe {
 
 .recipe p {
   margin: 0.5rem 0;
+}
+
+#back-btn {
+  margin-top: 20px;
+  padding: 0.8rem 2rem;
+  background: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#back-btn:hover {
+  background: #ff4a3d;
+}
+.recipe-text {
+  white-space: pre-wrap; /* Preserve line breaks and wrap text */
+  line-height: 1.6; /* Improve line spacing */
 }
