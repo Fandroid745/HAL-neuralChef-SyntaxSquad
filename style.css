@@ -1,0 +1,340 @@
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-size: cover;
+  background-position: center;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  transition: background 0.3s ease, color 0.3s ease;
+  position: relative;
+  min-height: 400px; /* Ensure the container has a minimum height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute space evenly */
+}
+
+body.dark-mode .container {
+  background: rgba(18, 18, 18, 0.9);
+  color: #e0e0e0;
+}
+
+header {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+header .logo {
+  width: 80px;
+  margin-right: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #ff6f61;
+}
+
+p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+body.dark-mode p {
+  color: #e0e0e0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode nav ul li a {
+  color: #e0e0e0;
+}
+
+nav ul li a:hover {
+  color: #ff6f61;
+}
+
+.input-section {
+  margin-top: 20px;
+  margin-bottom: 2rem;
+}
+
+input {
+  width: 80%;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode input {
+  background: #333;
+  color: #e0e0e0;
+  border-color: #555;
+}
+
+input:focus {
+  border-color: #ff6f61;
+}
+
+button {
+  margin-top: 20px;
+  padding: 0.8rem 2rem;
+  background: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #ff4a3d;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: absolute; /* Position the button in the corner */
+  top: 1rem; /* Adjust top position */
+  right: 1rem; /* Adjust right position */
+}
+
+#theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.output-section {
+  display: none;
+  max-height: 400px; /* Set a maximum height for the output section */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  margin-top: 20px; /* Add some spacing between input and output */
+  padding: 10px; /* Add padding to prevent content from touching the edges */
+  background: rgba(255, 255, 255, 0.9); /* Ensure background matches the container */
+  border-radius: 8px; /* Match the container's border radius */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loading img {
+  width: 50px;
+}
+
+.recipe {
+  text-align: left;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .recipe {
+  background: rgba(51, 51, 51, 0.9); /* Dark mode background */
+}
+
+.recipe h2 {
+  margin-top: 0;
+  color: #ff6f61;
+}
+
+.recipe p {
+  margin: 0.5rem 0;
+}
+
+#back-btn {
+  margin-top: 20px;
+  padding: 0.8rem 2rem;
+  background: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#back-btn:hover {
+  background: #ff4a3d;
+}
+.recipe-text {
+  white-space: pre-wrap; /* Preserve line breaks and wrap text */
+  line-height: 1.6; /* Improve line spacing */
+}
+
+/* Background Slideshow */
+.background-slideshow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.background-slideshow img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.background-slideshow img.active {
+  opacity: 1;
+}
+
+/* Update container background transparency */
+.container {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+body.dark-mode .container {
+  background: rgba(18, 18, 18, 0.85);
+}
+/* Saved Recipes Section */
+.saved-section {
+  display: none;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+body.dark-mode .saved-section {
+  background: rgba(51, 51, 51, 0.9);
+}
+
+#saved-recipes-list {
+  margin-top: 1rem;
+}
+
+.saved-recipe {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+body.dark-mode .saved-recipe {
+  background: rgba(25, 25, 25, 0.9);
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+#save-recipe-btn {
+  margin-top: 1rem;
+  background: #4CAF50;
+}
+
+#save-recipe-btn:hover {
+  background: #45a049;
+}
+#save-recipe-btn {
+  margin-top: 1rem;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#save-recipe-btn:hover {
+  background: #45a049;
+}
+
+.saved-recipe {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
