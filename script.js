@@ -38,8 +38,8 @@ shareExtraLink.addEventListener('click', (e) => {
 document.getElementById('generate-btn').addEventListener('click', async () => {
   const ingredients = document.getElementById('ingredients').value;
   if (!ingredients) {
-    alert('Please enter some ingredients!');
-    return;
+      alert('Please enter some ingredients!');
+      return;
   }
 
   // Show loading animation
@@ -48,29 +48,50 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
   document.getElementById('recipe-output').style.display = 'none';
 
   try {
-    // Call Groq Cloud API (replace with your API key and endpoint)
-    const response = await fetch('https://api.groq.com/v1/recipes/generate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer YOUR_GROQ_API_KEY`
-      },
-      body: JSON.stringify({ ingredients })
-    });
+      // Call Flask backend API
+      const response = await fetch('http://127.0.0.1:5000/get_recipe', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ user_input: ingredients.trim() })
+      });
 
-    const data = await response.json();
-    const recipe = data.recipe;
+      const data = await response.json();
 
-    // Display the generated recipe
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('recipe-output').style.display = 'block';
-    document.getElementById('recipe-output').innerHTML = `
-      <h2>Your Recipe</h2>
-      <p>${recipe}</p>
-    `;
+      // Hide loading animation
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('recipe-output').style.display = 'block';
+
+      if (data.error) {
+          // Handle error response
+          document.getElementById('recipe-output').innerHTML = `
+              <div class="error-message">
+                  <h2>Error</h2>
+                  <p>${data.error}</p>
+              </div>
+          `;
+      } else if (data.response) {
+          // Display the generated recipe
+          document.getElementById('recipe-output').innerHTML = `
+              <div class="recipe-content">
+                  <h2>Your Recipe</h2>
+                  <div class="recipe-text">${data.response}</div>
+              </div>
+          `;
+      } else {
+          throw new Error('Unexpected response format');
+      }
+
   } catch (error) {
-    console.error('Error:', error);
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('recipe-output').innerHTML = `<p>Error generating recipe. Please try again.</p>`;
+      console.error('Error:', error);
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('recipe-output').style.display = 'block';
+      document.getElementById('recipe-output').innerHTML = `
+          <div class="error-message">
+              <h2>Error</h2>
+              <p>Failed to generate recipe. Please try again.</p>
+          </div>
+      `;
   }
 });
