@@ -1,3 +1,17 @@
+// Background Slideshow
+const bgSlideshow = document.querySelector('.background-slideshow');
+const bgImages = bgSlideshow.getElementsByTagName('img');
+let currentBgIndex = 0;
+
+function changeBackground() {
+  bgImages[currentBgIndex].classList.remove('active');
+  currentBgIndex = (currentBgIndex + 1) % bgImages.length;
+  bgImages[currentBgIndex].classList.add('active');
+}
+
+bgImages[currentBgIndex].classList.add('active');
+setInterval(changeBackground, 5000);
+
 // Dark Mode Toggle
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
@@ -93,7 +107,6 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
     return;
   }
 
-  // Show loading animation
   document.querySelector('.output-section').style.display = 'block';
   document.getElementById('loading').style.display = 'flex';
   document.getElementById('recipe-output').style.display = 'none';
