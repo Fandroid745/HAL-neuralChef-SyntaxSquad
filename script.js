@@ -177,3 +177,19 @@ document.getElementById('back-btn').addEventListener('click', () => {
   });
 
   
+  // Background Slideshow Logic
+const backgroundSlideshow = document.querySelector('.background-slideshow');
+const slides = backgroundSlideshow.getElementsByTagName('img');
+let currentSlide = 0;
+
+function nextSlide() {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+}
+
+// Start slideshow with 5-second interval
+setInterval(nextSlide, 5000);
+
+// Initialize first slide
+slides[0].classList.add('active');
