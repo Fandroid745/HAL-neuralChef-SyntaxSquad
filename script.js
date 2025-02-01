@@ -1,3 +1,40 @@
+// Dark Mode Toggle
+const themeToggle = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Check for saved theme in localStorage
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+  body.classList.add(savedTheme);
+  updateToggleButton(savedTheme);
+}
+
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  const isDarkMode = body.classList.contains('dark-mode');
+  localStorage.setItem('theme', isDarkMode ? 'dark-mode' : '');
+  updateToggleButton(isDarkMode ? 'dark-mode' : '');
+});
+
+function updateToggleButton(theme) {
+  themeToggle.textContent = theme === 'dark-mode' ? '☀️' : '🌙';
+}
+
+// Navigation Logic
+const homeLink = document.getElementById('home-link');
+const shareExtraLink = document.getElementById('share-extra-link');
+
+homeLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  window.location.href = 'index.html'; // Redirect to home page
+});
+
+shareExtraLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  alert('Share Extra section is under construction!'); // Placeholder for Share Extra functionality
+});
+
+// Recipe Generation Logic
 document.getElementById('generate-btn').addEventListener('click', async () => {
   const ingredients = document.getElementById('ingredients').value;
   if (!ingredients) {
