@@ -26,12 +26,13 @@ def get_recipe():
 
         # Prepare the prompt for recipe generation
         prompt = f"""Generate a detailed recipe using these ingredients: {ingredients}.
-        Please include:
+        Introduce Yourself as a neuralChat ai recipe generator.
         1. A creative recipe title
         2. List of all ingredients with quantities
         3. Step by step cooking instructions
         4. Estimated cooking time
-        5. Number of servings"""
+        5. Number of servings
+        6..Please provide nutrution information """
 
         payload = {
             "model": "llama-3.3-70b-versatile",
