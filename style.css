@@ -303,3 +303,38 @@ body.dark-mode .saved-recipe {
 #save-recipe-btn:hover {
   background: #45a049;
 }
+#save-recipe-btn {
+  margin-top: 1rem;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#save-recipe-btn:hover {
+  background: #45a049;
+}
+
+.saved-recipe {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
