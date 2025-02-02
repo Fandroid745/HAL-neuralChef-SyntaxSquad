@@ -58,8 +58,13 @@ document.getElementById('back-to-home').addEventListener('click', () => {
 });
 
 // Save Recipe
+// In script.js - Update Save Recipe Handler
 document.addEventListener('click', (e) => {
-  if (e.target && e.target.id === 'save-recipe-btn') {
+  const saveBtn = e.target.closest('#save-recipe-btn'); // Fix: Use closest()
+  if (saveBtn) {
+    e.preventDefault();
+    e.stopPropagation(); // Add this to stop event bubbling
+
     const ingredients = document.getElementById('ingredients').value;
     const recipeText = document.querySelector('.recipe-text').innerHTML;
 
@@ -82,17 +87,21 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Delete Recipe
+// In script.js - Update Delete Recipe Handler
 document.addEventListener('click', async (e) => {
-  if (e.target && e.target.classList.contains('delete-btn')) {
-    const recipeId = e.target.dataset.id;
+  const deleteBtn = e.target.closest('.delete-btn'); // Fix: Use closest()
+  if (deleteBtn) {
+    e.preventDefault();
+    e.stopPropagation(); // Add this to stop event bubbling
+
+    const recipeId = deleteBtn.dataset.id;
     try {
       const response = await fetch(`http://127.0.0.1:5000/delete_recipe/${recipeId}`, {
         method: 'DELETE'
       });
       const data = await response.json();
       if (data.error) throw new Error(data.error);
-      e.target.parentElement.remove();
+      deleteBtn.parentElement.remove(); // Remove the recipe from the UI
     } catch (error) {
       alert('Error deleting recipe: ' + error.message);
     }
